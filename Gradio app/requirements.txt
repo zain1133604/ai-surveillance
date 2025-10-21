@@ -1,0 +1,32 @@
+# ---- Gradio App (FIXED VERSIONS) ----
+gradio==5.49.1
+gradio-client==1.13.3
+
+# ---- Core ML & Vision ----
+torch==2.5.1
+torchaudio==2.5.1
+ultralytics==8.3.31
+timm==1.0.11
+opencv-python-headless==4.10.0.84
+numpy<2.0,>=1.26.4
+pillow==10.4.0
+scipy==1.14.1
+matplotlib==3.9.2
+tqdm==4.66.5
+lap
+
+# ---- Face Detection / Recognition ----
+face-alignment==1.4.1
+keras-facenet==0.3.2
+
+# ---- Utilities ----
+pandas==2.2.3
+requests==2.32.3
+huggingface-hub==0.34.4
+
+# ---- TensorFlow (CPU-friendly) ----
+tensorflow-cpu==2.17.0
+h5py==3.11.0
+
+# ---- ONNX Runtime ----
+onnxruntime==1.17.0
