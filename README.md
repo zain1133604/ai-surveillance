@@ -55,51 +55,44 @@ This application combines **three independent AI systems** into a single intelli
 ---
 
 ## ⚙️ Architecture
-         ┌─────────────────────────────┐
-         │        User Input           │
-         │  (Video Upload + Mode +    │
-         │   Restricted Area Sketch + │
-         │   Reference Face Image)   │
-         └──────────────┬────────────┘
-                        │
-                        ▼
-         ┌─────────────────────────────┐
-         │    Preprocessing Module     │
-         │ - Extract first frame       │
-         │ - Generate ROI mask         │
-         │ - Preprocess reference face │
-         └──────────────┬────────────┘
-                        │
-                        ▼
- ┌─────────────────────────────────────────────┐
- │ YOLOv8 Human Detector (Nano)                │
- │ YOLOv8 Weapon Detector (Small)             │
- │ YOLOv8 Face Detector (Nano)                │
- └─────────────────────────────────────────────┘
-                        │
-                        ▼
-            ┌────────────────────┐
-            │   ByteTrack (ID)   │
-            │ Track humans frame │
-            │   by frame         │
-            └────────────────────┘
-                        │
-                        ▼
- ┌─────────────────────────────────────────────┐
- │ FaceNet + Face Alignment                     │
- │ (Detect & Match Missing Person Reference)   │
- └─────────────────────────────────────────────┘
-                        │
-                        ▼
-         ┌─────────────────────────────┐
-         │   Alert & Annotate Output   │
-         │ - Bounding Boxes            │
-         │ - Restricted Area Breach    │
-         │ - Weapon Alerts             │
-         │ - Missing Person Highlight  │
-         └─────────────────────────────┘
-
-
+      ┌──────────────┐
+      │  User Input  │
+      │ Video + Mode │
+      └─────┬────────┘
+            │
+            ▼
+      ┌──────────────┐
+      │ Preprocess   │
+      │ First Frame  │
+      │ ROI Mask     │
+      │ Face Embed   │
+      └─────┬────────┘
+            │
+            ▼
+┌─────────────────────┐
+│ YOLOv8 Detectors    │
+│ Human / Weapon /    │
+│ Face (Nano/Small)   │
+└─────┬───────────────┘
+      │
+      ▼
+ ┌──────────────┐
+ │ ByteTrack ID │
+ └─────┬────────┘
+       │
+       ▼
+ ┌──────────────┐
+ │ FaceNet +    │
+ │ Alignment    │
+ │ (Missing ID) │
+ └─────┬────────┘
+       │
+       ▼
+ ┌──────────────┐
+ │ Alerts +     │
+ │ Annotated    │
+ │ Output Video │
+ └──────────────┘
 
 ---
 
