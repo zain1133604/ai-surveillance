@@ -19,22 +19,25 @@ Built using **YOLOv8**, **ByteTrack**, and **FaceNet**, this system processes up
 
 ## 🚀 Project Overview
 
-This application combines **three independent AI systems** into a single intelligent video monitoring tool:
+An AI-powered real-time surveillance system integrating Human Detection, Weapon Detection, Restricted Area Monitoring, and Missing Person Recognition. Processes videos and identifies security breaches automatically: 
 
 ### 🧍 1. Human Detection & Tracking
+- YOLOv8 Human Detector (Medium to Nano): trained on ~50,000 human images.
 - Detects and tracks humans in real-time using **YOLOv8 (distilled lightweight model)**.
 - Each person is assigned a **unique ID** using **ByteTrack**.
 
-### 🔫 2. Weapon Detection (Gun & Knife)
-- Detects weapons using a **custom YOLOv8-Small model** distilled from a 115k weapon dataset.
+### 🔫 2. Weapon Detection (Gun & Knife) 
+- YOLOv8 Weapon Detector (Large to Small): trained on ~120,000 weapon images (guns & knives).
+- Detects weapons using a **custom YOLOv8-Small model** distilled from a 120k weapon dataset.
 - Automatically raises red alerts when a weapon is detected.
 
-### 🚷 3. Restricted Area Monitoring
+### 🚷 3. Restricted Area Monitoring 
 - User paints a **restricted zone** directly on the video’s first frame (using Gradio ImageEditor).
 - System monitors entry of humans into that region in real-time.
 - Intrusion triggers visual and textual alerts in the final output video.
 
 ### 🕵️ 4. Missing Person Recognition
+- YOLOv8 Face Detector (Medium to Nano): trained on ~40,000 face images.
 - Upload a **reference image** of the missing person.
 - The system uses **Face Detection (YOLOv8)** and **Face Recognition (FaceNet + Face Alignment)** to locate them in the video.
 - Displays a bold yellow **“MATCH FOUND!”** overlay and highlights the identified person.
@@ -50,7 +53,7 @@ This application combines **three independent AI systems** into a single intelli
 | **Core AI Models** | YOLOv8 (Ultralytics), ByteTrack, FaceNet |
 | **Face Alignment** | face-alignment library |
 | **Model Compression** | Knowledge Distillation |
-| **Deployment** | Hugging Face Space (with ONNX optimized models) |
+| **Deployment** | Hugging Face Space (with gradio) |
 
 ---
 
@@ -91,22 +94,22 @@ Architecture Overview – Intelligent Video Surveillance App
 
 ## 🧠 Distillation Summary
 
-| Model | Teacher | Student | Purpose |
-|--------|----------|----------|----------|
-| YOLOv8-L | → YOLOv8-Nano | Human Detection |
-| YOLOv8-L | → YOLOv8-Small | Weapon Detection |
-| YOLOv8-M | → YOLOv8-Nano | Face Detection |
+| Model | Teacher | Student | Purpose | Images |
+|--------|----------|----------|----------|---------|
+| YOLOv8-L | → YOLOv8-Nano | Human Detection | 50,000 |
+| YOLOv8-L | → YOLOv8-Small | Weapon Detection | 120,000 |
+| YOLOv8-M | → YOLOv8-Nano | Face Detection | 40,000 |
 
 ---
 
 ## 🧾 Features Summary
 
-✅ Real-time Human + Weapon detection  
-✅ Region-based intrusion alerts  
-✅ Missing person recognition with FaceNet  
-✅ Multi-object tracking with ByteTrack  
-✅ Deployed on Hugging Face for testing  
-✅ ONNX-optimized models for faster inference  
+
+✅ Real-time Human, Weapon, and Face detection using YOLOv8
+✅ Multi-object tracking with ByteTrack (Human IDs)
+✅ Restricted Area alerts with user-drawn ROI
+✅ Missing person recognition using FaceNet + Face Alignment
+✅ Gradio-based web app for interactive video processing
 
 ---
 
