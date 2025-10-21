@@ -16,7 +16,11 @@ Built using **YOLOv8**, **ByteTrack**, and **FaceNet**, this system processes up
 </div>
 
 ---
+## Test link:
 
+https://huggingface.co/spaces/zain1133604/AI_Surveillance
+
+---
 ## 🚀 Project Overview
 
 An AI-powered real-time surveillance system integrating Human Detection, Weapon Detection, Restricted Area Monitoring, and Missing Person Recognition. Processes videos and identifies security breaches automatically: 
