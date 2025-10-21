@@ -55,44 +55,37 @@ This application combines **three independent AI systems** into a single intelli
 ---
 
 ## ⚙️ Architecture
-      ┌──────────────┐
-      │  User Input  │
-      │ Video + Mode │
-      └─────┬────────┘
-            │
-            ▼
-      ┌──────────────┐
-      │ Preprocess   │
-      │ First Frame  │
-      │ ROI Mask     │
-      │ Face Embed   │
-      └─────┬────────┘
-            │
-            ▼
-┌─────────────────────┐
-│ YOLOv8 Detectors    │
-│ Human / Weapon /    │
-│ Face (Nano/Small)   │
-└─────┬───────────────┘
-      │
-      ▼
- ┌──────────────┐
- │ ByteTrack ID │
- └─────┬────────┘
-       │
-       ▼
- ┌──────────────┐
- │ FaceNet +    │
- │ Alignment    │
- │ (Missing ID) │
- └─────┬────────┘
-       │
-       ▼
- ┌──────────────┐
- │ Alerts +     │
- │ Annotated    │
- │ Output Video │
- └──────────────┘
+Architecture Overview – Intelligent Video Surveillance App
+
+1. User Input:
+   - Upload a video.
+   - Select mode: normal, restricted, or missing_person.
+   - Optionally draw Restricted Area or upload reference face image.
+
+2. Preprocessing Module:
+   - Extract first frame from video.
+   - Generate ROI mask for Restricted Area mode.
+   - Preprocess reference face for FaceNet embedding.
+
+3. Detection Module (YOLOv8):
+   - Human Detector (Nano) - detect & track humans.
+   - Weapon Detector (Small) - detect guns/knives.
+   - Face Detector (Nano) - detect faces for missing person recognition.
+
+4. Tracking Module (ByteTrack):
+   - Assign unique IDs to humans.
+   - Track humans frame by frame.
+
+5. Face Recognition Module (FaceNet + Face Alignment):
+   - Align detected faces.
+   - Match with reference image to detect missing persons.
+
+6. Alert & Annotation Module:
+   - Draw bounding boxes and labels.
+   - Flag Restricted Area breaches.
+   - Highlight detected weapons and missing persons.
+   - Output annotated video with alerts.
+
 
 ---
 
