@@ -1,0 +1,7 @@
+tracker_type: bytetrack
+fuse_score: True  # Add this line
+track_high_thresh: 0.3
+track_low_thresh: 0.1
+new_track_thresh: 0.7
+track_buffer: 50
+match_thresh: 0.8
