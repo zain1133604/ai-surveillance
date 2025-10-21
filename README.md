@@ -55,30 +55,50 @@ This application combines **three independent AI systems** into a single intelli
 ---
 
 ## ⚙️ Architecture
-flowchart TD
-    A[User Input] -->|Upload Video| B[Extract First Frame]
-    A -->|Draw Restricted Area| C[Generate ROI Mask]
-    A -->|Upload Reference Face| D[Preprocess Reference Face]
-    
-    B --> E[Detection & Tracking Pipeline]
-    C --> E
-    D --> E
+         ┌─────────────────────────────┐
+         │        User Input           │
+         │  (Video Upload + Mode +    │
+         │   Restricted Area Sketch + │
+         │   Reference Face Image)   │
+         └──────────────┬────────────┘
+                        │
+                        ▼
+         ┌─────────────────────────────┐
+         │    Preprocessing Module     │
+         │ - Extract first frame       │
+         │ - Generate ROI mask         │
+         │ - Preprocess reference face │
+         └──────────────┬────────────┘
+                        │
+                        ▼
+ ┌─────────────────────────────────────────────┐
+ │ YOLOv8 Human Detector (Nano)                │
+ │ YOLOv8 Weapon Detector (Small)             │
+ │ YOLOv8 Face Detector (Nano)                │
+ └─────────────────────────────────────────────┘
+                        │
+                        ▼
+            ┌────────────────────┐
+            │   ByteTrack (ID)   │
+            │ Track humans frame │
+            │   by frame         │
+            └────────────────────┘
+                        │
+                        ▼
+ ┌─────────────────────────────────────────────┐
+ │ FaceNet + Face Alignment                     │
+ │ (Detect & Match Missing Person Reference)   │
+ └─────────────────────────────────────────────┘
+                        │
+                        ▼
+         ┌─────────────────────────────┐
+         │   Alert & Annotate Output   │
+         │ - Bounding Boxes            │
+         │ - Restricted Area Breach    │
+         │ - Weapon Alerts             │
+         │ - Missing Person Highlight  │
+         └─────────────────────────────┘
 
-    subgraph Detection & Tracking Pipeline
-        E1[Human Detection & ByteTrack] --> E2{Check Restricted Area?}
-        E2 -->|Yes| E3[Alert: Restricted Breach]
-        E2 -->|No| E4[Normal ID Bounding Box]
-        
-        E5[Weapon Detection] --> E6[Weapon Alerts]
-        
-        E7[Face Detection + FaceNet] --> E8{Matches Reference?}
-        E8 -->|Yes| E9[Yellow Bounding Box + "MATCH FOUND!"]
-        E8 -->|No| E10[No Action]
-    end
-
-    E --> F[Draw Bounding Boxes & Labels]
-    F --> G[Generate Alert Log]
-    F --> H[Output Processed Video]
 
 ---
 
