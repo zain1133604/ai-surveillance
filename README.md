@@ -109,11 +109,11 @@ Architecture Overview – Intelligent Video Surveillance App
 ## 🧾 Features Summary
 
 
-✅ Real-time Human, Weapon, and Face detection using YOLOv8
-✅ Multi-object tracking with ByteTrack (Human IDs)
-✅ Restricted Area alerts with user-drawn ROI
-✅ Missing person recognition using FaceNet + Face Alignment
-✅ Gradio-based web app for interactive video processing
+✅ Real-time Human, Weapon, and Face detection using YOLOv8                                                                                                                                                 
+✅ Multi-object tracking with ByteTrack (Human IDs)                                                                                                                                                        
+✅ Restricted Area alerts with user-drawn ROI                                                                                                                                                            
+✅ Missing person recognition using FaceNet + Face Alignment                                                                                                                                               
+✅ Gradio-based web app for interactive video processing                                                                                                                                                  
 
 ---
 
