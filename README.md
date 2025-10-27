@@ -48,7 +48,7 @@ An AI-powered real-time surveillance system integrating Human Detection, Weapon 
 
 ---
 
-## 🧠 Distillation Summary
+## 🧠 Distillation 
 
 ### 👤 Human Detection
 | Model | Precision | Recall | mAP50 | mAP50-95 |
