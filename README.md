@@ -98,7 +98,7 @@ Architecture Overview – Intelligent Video Surveillance App
 
 ## 🧠 Distillation Summary
 
-| Model | Teacher | Student | Images |
+| Model | Teacher | Student |  putpodr | Images |
 |--------|----------|----------|----------|---------|
 | YOLOv8-L | → YOLOv8-Nano | Human Detection | 50,000 |
 | YOLOv8-L | → YOLOv8-Small | Weapon Detection | 120,000 |
