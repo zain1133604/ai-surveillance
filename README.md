@@ -48,6 +48,30 @@ An AI-powered real-time surveillance system integrating Human Detection, Weapon 
 
 ---
 
+## 🧠 Distillation Summary
+
+### 👤 Human Detection
+| Model | Precision | Recall | mAP50 | mAP50-95 |
+|--------|------------|---------|--------|-----------|
+| YOLOv8-L (Teacher) | 0.8160 | 0.7191 | 0.8076 | 0.6016 |
+| YOLOv8-Nano (Student) | 0.7904 | 0.6491 | 0.7357 | 0.5078 |
+
+### 🔫 Weapon Detection
+| Model | Precision | Recall | mAP50 | mAP50-95 |
+|--------|------------|---------|--------|-----------|
+| YOLOv8-L (Teacher) | 0.9102 | 0.90383 | 0.9421 | 0.7110 |
+| YOLOv8-Small (Student) | 0.8860 | 0.8546 | 0.9097 | 0.6630 |
+
+### 🙂 Face Detection
+| Model | Precision | Recall | mAP50 | mAP50-95 |
+|--------|------------|---------|--------|-----------|
+| YOLOv8-M (Teacher) | 0.9025 | 0.6896 | 0.7670 | 0.5063 |
+| YOLOv8-Nano (Student) | 0.881 | 0.6125 | 0.693 | 0.4457 |
+
+
+---
+
+
 ## 🧩 Tech Stack
 
 | Component | Description |
@@ -96,28 +120,6 @@ Architecture Overview – Intelligent Video Surveillance App
 
 ---
 
-## 🧠 Distillation Summary
-
-### 👤 Human Detection
-| Model | Precision | Recall | mAP50 | mAP50-95 |
-|--------|------------|---------|--------|-----------|
-| YOLOv8-L (Teacher) | 0.8160 | 0.7191 | 0.8076 | 0.6016 |
-| YOLOv8-Nano (Student) | 0.7904 | 0.6491 | 0.7357 | 0.5078 |
-
-### 🔫 Weapon Detection
-| Model | Precision | Recall | mAP50 | mAP50-95 |
-|--------|------------|---------|--------|-----------|
-| YOLOv8-L (Teacher) | 0.9102 | 0.90383 | 0.9421 | 0.7110 |
-| YOLOv8-Small (Student) | 0.8860 | 0.8546 | 0.9097 | 0.6630 |
-
-### 🙂 Face Detection
-| Model | Precision | Recall | mAP50 | mAP50-95 |
-|--------|------------|---------|--------|-----------|
-| YOLOv8-M (Teacher) | 0.9025 | 0.6896 | 0.7670 | 0.5063 |
-| YOLOv8-Nano (Student) | 0.881 | 0.6125 | 0.693 | 0.4457 |
-
-
----
 
 ## 🧾 Features Summary
 
